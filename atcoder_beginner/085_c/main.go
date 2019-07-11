@@ -1,55 +1,35 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"os"
-	"strings"
+)
+
+const (
+	a = 10000
+	b = 5000
+	c = 1000
 )
 
 func main() {
-	var s string
-	fmt.Scan(&s)
+	var n, y int
+	fmt.Scan(&n)
+	fmt.Scan(&y)
 
-	if s[:1] != "d" && s[:1] != "e" {
-		fmt.Println("NO")
-		os.Exit(0)
-	}
-
-	for {
-		var err error
-		s, err = removeMatchedStr(s)
-		if err != nil {
-			fmt.Println("NO")
-			os.Exit(0)
-		}
-		if len(s) == 0 {
+	for i := 0; i <= n; i++ {
+		if a*i > y {
 			break
 		}
+		for j := 0; j <= n-i; j++ {
+			if a*i+b*j > y {
+				break
+			}
+			k := n - i - j
+			if i*a+j*b+k*c == y {
+				fmt.Printf("%d %d %d\n", i, j, k)
+				os.Exit(0)
+			}
+		}
 	}
-	fmt.Println("YES")
-}
-
-func removeMatchedStr(s string) (string, error) {
-	if s == "dreamer" || s == "dream" || s == "eraser" || s == "erase" {
-		return "", nil
-	}
-
-	if strings.HasSuffix(s, "dreamer") {
-		return strings.TrimSuffix(s, "dreamer"), nil
-	}
-
-	if strings.HasSuffix(s, "dream") {
-		return strings.TrimSuffix(s, "dream"), nil
-	}
-
-	if strings.HasSuffix(s, "eraser") {
-		return strings.TrimSuffix(s, "eraser"), nil
-	}
-
-	if strings.HasSuffix(s, "erase") {
-		return strings.TrimSuffix(s, "erase"), nil
-	}
-
-	return "", errors.New("string is not found")
+	fmt.Println("-1 -1 -1")
 }
