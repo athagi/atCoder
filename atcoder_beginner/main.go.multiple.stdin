@@ -1,31 +1,33 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"io/ioutil"
-	"log"
-	"os"
-	"strings"
 )
 
 func main() {
+	var N int
+	fmt.Scan(&N)
 
-	body, err := ioutil.ReadAll(os.Stdin)
-	if err != nil {
-		log.Println(err)
-	}
-	scanner := bufio.NewScanner(strings.NewReader(string(body)))
-	scanner.Split(bufio.ScanWords)
-	if err := scanner.Err(); err != nil {
-		fmt.Fprintln(os.Stderr, "reading input:", err)
-	}
-	inputs := make([]string, 0)
-	for scanner.Scan() {
-		word := scanner.Text()
-		word = strings.TrimSpace(word)
-		inputs = append(inputs, word)
-	}
+	words := scanStrings(N)
 
 	fmt.Println(inputs)
+
+}
+
+func scanStrings(len int) (strings []string) {
+	var str string
+	for i := 0; i < len; i++ {
+		fmt.Scanf("%s", &str)
+		strings = append(strings, sortString(str))
+	}
+	return
+}
+
+func scanNums(len int) (nums []int) {
+	var num int
+	for i := 0; i < len; i++ {
+		fmt.Scan(&num)
+		nums = append(nums, num)
+	}
+	return
 }
