@@ -1,34 +1,17 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"io/ioutil"
-	"log"
-	"os"
 	"sort"
 	"strings"
 )
 
 func main() {
+	var N int
+	fmt.Scan(&N)
 
-	body, err := ioutil.ReadAll(os.Stdin)
-	if err != nil {
-		log.Println(err)
-	}
-	scanner := bufio.NewScanner(strings.NewReader(string(body)))
-	scanner.Split(bufio.ScanWords)
-	if err := scanner.Err(); err != nil {
-		fmt.Fprintln(os.Stderr, "reading input:", err)
-	}
-	inputs := make([]string, 0)
-	for scanner.Scan() {
-		word := scanner.Text()
-		// word = strings.TrimSpace(word)
-		inputs = append(inputs, sortString(word))
-	}
+	words := scanStrings(N)
 
-	words := inputs[1:]
 	var counter int
 	// for i := 0; i < len(words); i++ {
 	// 	baseWord := words[i]
@@ -52,6 +35,15 @@ func main() {
 	}
 
 	fmt.Println(counter)
+}
+
+func scanStrings(len int) (strings []string) {
+	var str string
+	for i := 0; i < len; i++ {
+		fmt.Scanf("%s", &str)
+		strings = append(strings, sortString(str))
+	}
+	return
 }
 
 func sortString(word string) string {
