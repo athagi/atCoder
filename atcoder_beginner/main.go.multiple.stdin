@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
+	"unicode/utf8"
 )
 
 func main() {
 	var N int
 	fmt.Scan(&N)
 
-	words := scanStrings(N)
+	inputs := scanStrings(N)
 
 	fmt.Println(inputs)
 
@@ -18,7 +19,7 @@ func scanStrings(len int) (strings []string) {
 	var str string
 	for i := 0; i < len; i++ {
 		fmt.Scanf("%s", &str)
-		strings = append(strings, sortString(str))
+		strings = append(strings, str)
 	}
 	return
 }
@@ -28,6 +29,13 @@ func scanNums(len int) (nums []int) {
 	for i := 0; i < len; i++ {
 		fmt.Scan(&num)
 		nums = append(nums, num)
+	}
+	return
+}
+
+func spritString(input string) (res []string) {
+	for i := 0; i < utf8.RuneCountInString(input); i++ {
+		res = append(res, input[i:i+1])
 	}
 	return
 }
