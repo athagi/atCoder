@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 func main() {
@@ -9,14 +10,13 @@ func main() {
 	fmt.Scan(&N)
 
 	inputs := scanNums(N)
-	ans := 0
-	for i := N - 2; i >= 0; i-- {
+	ans := float64(inputs[0])
 
-		ans += inputs[i]
-		// fmt.Println(ans)
+	for i := 1; i < N; i++ {
+		ans += math.Min(float64(inputs[i]), float64(inputs[i-1]))
 	}
-	ans += inputs[0]
-	fmt.Println(ans)
+
+	fmt.Println(int(ans))
 }
 
 func scanNums(len int) (nums []int) {
