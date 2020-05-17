@@ -24,7 +24,6 @@ func solv(len int) (broken int) {
 		} else {
 			broken += 1
 		}
-		// nums = append(nums, num)
 	}
 	if broken == len {
 		return -1
@@ -32,12 +31,3 @@ func solv(len int) (broken int) {
 	return
 }
 
-// func scanNums(len int) (nums []int) {
-// 	var num int
-// 	var broken int
-// 	for i := 0; i < len; i++ {
-// 		fmt.Scan(&num)
-// 		nums = append(nums, num)
-// 	}
-// 	return
-// }
