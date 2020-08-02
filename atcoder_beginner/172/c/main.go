@@ -44,7 +44,7 @@ func main() {
 
 	var a, b int
 	var max float64
-	bLoc := len(Bs) -1
+	bLoc := len(Bs) -1 //これがないとTLE
 	for i := 0; i < len(As); i++ {
 		a = As[i]
 		if a > K {
