@@ -2,6 +2,7 @@ package main
 
 import (
 		"fmt"
+		"strings"
 )
 
 
@@ -13,20 +14,34 @@ func main() {
 	rev := false
 	res := []string{}
 	for i:= 0; i < len(S); i++ {
-		fmt.Println(S[i:i+1])
+		// fmt.Println(S[i:i+1])
 		s = S[i:i+1]
 		if s == "R" {
 			rev = !rev
 			continue
 		}
 
+		if len(res) == 0 {
+			res = append(res, s)
+			continue
+		}
+
 		if rev {
 			tmp := []string{s}
+			if s == res[0] {
+				res = res[1:]
+				continue
+			}
 			res = append(tmp, res...)
 		} else {
+			if s == res[len(res)-1] {
+				res = res[:len(res)-1]
+				continue
+			}
 			res = append(res, s)
 		}
 	}
+
 
 
 	if rev {
@@ -34,7 +49,6 @@ func main() {
 			res[i], res[j] = res[j], res[i]
 		}
 	}
-	fmt.Println(res)
+	fmt.Println(strings.Join(res, ""))
 
 }
-
