@@ -12,7 +12,7 @@ func main() {
 	fmt.Scan(&S)
 
 	rev := false
-	res := []string{}
+	res := make([]string, len(S), len(S))
 	for i:= 0; i < len(S); i++ {
 		// fmt.Println(S[i:i+1])
 		s = S[i:i+1]
