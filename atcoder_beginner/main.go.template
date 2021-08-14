@@ -12,3 +12,12 @@ func main() {
 	fmt.Println(a)
 	fmt.Println(b)
 }
+
+func sortString(word string) string {
+	chars := []string{}
+	for _, c := range word {
+		chars = append(chars, string(c))
+	}
+	sort.Strings(chars)
+	return strings.Join(chars, "")
+}
