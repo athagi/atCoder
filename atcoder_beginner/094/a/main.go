@@ -6,9 +6,9 @@ func main() {
 	var A, B, X int
 	fmt.Scan(&A, &B, &X)
 
-	res := "No"
+	res := "NO"
 	if A <= X && X <= A+B {
-		res = "Yes"
+		res = "YES"
 	}
 	fmt.Println(res)
 }

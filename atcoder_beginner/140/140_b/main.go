@@ -15,18 +15,13 @@ func main() {
 
 	ans := 0
 	beforeDish := A[0]
-	// fmt.Println(A)
-	// fmt.Println(B)
-	// fmt.Println(C)
 	for i := 0; i < N; i++ {
-		// fmt.Println(B[A[i]-1])
 		ans += B[A[i]-1]
 		if beforeDish+1 == A[i] {
 			ans += C[A[i-1]-1]
 		}
 
 		beforeDish = A[i]
-		// fmt.Println(ans)
 	}
 	fmt.Println(ans)
 
